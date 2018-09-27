@@ -1,0 +1,70 @@
+<div class="example-wrapper">
+  <kendo-autocomplete [data]="data" [filterable]="true" (filterChange)="handleFilter($event)" [placeholder]="'e.g. Andorra'">
+  </kendo-autocomplete>
+</div>
+<form novalidate [formGroup]="form" (ngSubmit)="AddUser()">
+  <div class="form-group">
+    <label for="name">
+      Name:
+    </label>
+    <input type="text" formControlName="name" class="form-control">
+
+    <div *ngIf="form.get('name').touched && form.get('name').invalid" class="alert alert-danger">
+      <div *ngIf="form.get('name').hasError('required')">
+        Name is Required
+      </div>
+      <div *ngIf="form.get('name').hasError('pattern')">
+        Name is Invalid
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="contact">
+      Contact:
+    </label>
+    <input type="text" formControlName="contact" class="form-control">
+
+
+    <div *ngIf="form.get('contact').touched && form.get('contact').invalid" class="alert alert-danger">
+      <div *ngIf="form.get('contact').hasError('required')">
+        Contact is Required
+      </div>
+      <div *ngIf="form.get('contact').hasError('minlength')">
+        Contact Min Length should be 10
+      </div>
+      <div *ngIf="form.get('contact').hasError('maxlength')">
+        Contact Max Length should be 10
+      </div>
+      <div *ngIf="form.get('contact').hasError('pattern')">
+          Contact is Invalid
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="name">
+      email:
+    </label>
+    <input type="text" formControlName="email" class="form-control">
+
+    <div *ngIf="form.get('email').touched && form.get('email').invalid" class="alert alert-danger">
+      <div *ngIf="form.get('email').hasError('required')">
+        E-mail is Required
+      </div>
+      <div *ngIf="form.get('email').hasError('email')">
+        Email is not valid
+      </div>
+    </div>
+
+  </div>
+  <button type="submit" [disabled]="form.invalid" class="btn btn-success">Add User</button>
+  <ul>
+    <li *ngFor="let user of userList">
+      {{user.name}} -- {{user.contact}} --{{user.email}}
+    </li>
+  </ul>
+</form>

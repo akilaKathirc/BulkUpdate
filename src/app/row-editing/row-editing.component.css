@@ -1,0 +1,16 @@
+ :host >>> .special {
+        color: red;
+      }
+
+.yellowback {
+         background-color: rgb(255,205,0);
+    border-radius: 4px;
+    color: #fff;
+    display: block;    
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 99%;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+      }

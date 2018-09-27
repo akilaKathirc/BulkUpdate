@@ -1,0 +1,25 @@
+
+<button id="btnOpenCreatePickRule"  class="cssCreate" (click)="OpenCreatePickRule()">Create</button>
+
+<img src="../../assets/images/bindestrich.png" alt="text">
+<br>
+<kendo-panelbar #panelbar  (stateChange)="onStateChange($event)" [imageUrl]="iconUrl">
+    <kendo-panelbar-item [expanded]="expandedItem">
+      <ng-template kendoPanelBarContent>
+          <div>
+              <div class="teamMate">
+                    <h2>Andrew Fuller</h2>
+                    <p>Team Lead</p>
+              </div>
+              <div class="teamMate">
+                    <h2>Nancy Leverling</h2>
+                    <p>Sales Associate</p>
+              </div>
+              <div class="teamMate">
+                    <h2>Robert King</h2>
+                    <p>Business System Analyst</p>
+              </div>
+          </div>
+      </ng-template>
+  </kendo-panelbar-item>
+    </kendo-panelbar>

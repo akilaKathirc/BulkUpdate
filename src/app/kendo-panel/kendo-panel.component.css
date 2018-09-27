@@ -1,0 +1,318 @@
+.cssCreate{
+    background-color: orange;
+}
+
+
+
+
+/* @import '../../../../assets/scss/variables';
+
+ 
+
+// Create pick rule list
+
+
+
+@import '../../../../assets/scss/mixins';
+
+ 
+
+:host {
+
+    display: block;
+
+    }
+
+ 
+
+.createPickRule{
+
+    .header{
+
+        background: #dedede;
+
+        padding:8px 10px;
+
+        position: relative;
+
+        .back{
+
+            position: absolute;
+
+            right:15px;
+
+            top:10px;
+
+            cursor: pointer;
+
+        }
+
+    }
+
+    .formCnt{
+
+        // border:1px solid #ccc;
+
+        // padding:20px 20px 0;
+
+        // background: #fff;
+
+        .row{
+
+            margin-bottom:25px;
+
+        }
+
+        .indicate{
+
+            text-align: right;
+
+            margin-bottom:20px;
+
+            @include font-face(null, null, 12px, normal, null);
+
+        }
+
+        .required{
+
+            @include font-face(null, #ff0000, 12px, 600, null);
+
+        }
+
+        textarea{
+
+            height: 73px;
+
+            resize: none;
+
+        }
+
+        .form-group{
+
+            margin:0;
+
+        }       
+
+    .gridBtn{
+
+        margin-top:20px;
+
+        text-align: right;
+
+      
+
+        .btn-dropdown{
+
+            display: inline-block;
+
+        }
+
+    }
+
+    }
+
+}
+
+ 
+
+ 
+
+:host-context(.form-group) .k-state-disabled{
+
+    border:1px solid #ff0000;
+
+}
+
+ 
+
+:host(.k-datepicker) .k-state-disabled{
+
+   border:1px solid #ff0000;
+
+}
+
+ 
+
+/deep/ .k-datepicker, /deep/ .k-dropdown-wrap, /deep/ .k-combobox, /deep/ .k-autocomplete{
+
+    width:100%;
+
+    border-color:$border-form-field;
+
+    @include border-radius(4px);
+
+}
+
+/deep/ .k-combobox .k-dropdown-wrap{
+
+    border-color:inherit;
+
+}
+
+ 
+
+/deep/ .k-state-disabled .k-state-disabled{
+
+    background-color: #f6f5f4;
+
+}  
+
+/deep/ .k-state-disabled .k-dateinput .k-dateinput-wrap {
+
+    background:#f6f5f4;
+
+}
+
+/deep/ .k-state-disabled{
+
+    opacity: 1;
+
+    border-color:$border-form-field;
+
+    @include border-radius(4px);
+
+}
+
+/deep/ .k-combobox>:hover .k-select, /deep/ .k-combobox .k-select{
+
+    background: none;
+
+}
+
+/deep/ .k-combobox>.k-state-focused, .k-autocomplete.k-state-focused{
+
+    border-color: $borer-form-foucs;
+
+    box-shadow: 0px 0px 12px rgba(125,187,255,.60);
+
+}
+
+/deep/ .ng-invalid.ng-dirty>.k-dropdown-wrap, /deep/ .ng-invalid.ng-touched>.k-dropdown-wrap, /deep/ .ng-invalid.ng-touched.k-autocomplete{
+
+    border-color: $borer-form-invalid;
+
+    box-shadow: 0px 0px 12px rgba(255,0,0,.60);
+
+}
+
+//  /deep/   .k-animation-container{
+
+//     width:400px !important;
+
+// }
+
+ 
+
+ 
+
+/deep/ .k-dialog{
+
+    @include border-radius(4px);
+
+    padding:4px;
+
+    .k-dialog-titlebar{
+
+        background: inherit;
+
+        border:none;
+
+        @include font-face(null, $color-text-brand, 18px, 600, null);
+
+        .k-dialog-actions{
+
+            color:#666;
+
+            .k-button.k-bare:hover::before{
+
+                background: none;
+
+            }
+
+            .k-button.k-bare:focus::after{
+
+                box-shadow: none;
+
+            }
+
+        }
+
+    }
+
+    .warning {
+
+        position: relative;
+
+        margin:0px 0 25px;
+
+        color:$color-text-default;
+
+        padding:5px 0 5px 70px;
+
+        .fa-exclamation-triangle{
+
+            position: absolute;
+
+            left:0;
+
+            top:0;
+
+            color:#ff0000;
+
+            font-size: 40px;
+
+        }
+
+    }
+
+}
+
+ 
+
+/deep/ .k-tabstrip>.k-content {
+
+    padding: 4px 15px;
+
+    background-color: #f2f2f2;
+
+    border: none;
+
+}
+
+ 
+
+/deep/ .k-tabstrip-top>.k-tabstrip-items .k-item {
+
+     font-weight: 600;
+
+     color: #333333;
+
+}
+
+ 
+
+/deep/ .k-tabstrip .k-item.k-state-active {
+
+    border-color: rgba(0,0,0,.08);
+
+    color: #DC5034;
+
+    background-color: #f2f2f2;
+
+    font-weight: 600;
+
+}
+
+ 
+
+/deep/ .k-tabstrip-top>.k-tabstrip-items .k-item.k-state-active {
+
+    border-bottom-color: #f2f2f2;
+
+}
+
+ 
+
+
+ 
+ */

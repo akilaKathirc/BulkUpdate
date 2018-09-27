@@ -1,0 +1,60 @@
+  
+  <table style="border:1px;">
+    <tr>
+      <td>Columns to be Edited</td>
+      <td>Find </td>
+      <td>Replace </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <kendo-dropdownlist [data]="columns" (valueChange)="onChange($event)"></kendo-dropdownlist>
+      </td>
+      <td> <input type="text" [(ngModel)]="txtFind"></td>
+      <td> <input type="text" [(ngModel)]="txtReplace"></td>
+      <td> <button (click)="findAndReplace()">Find and Replace</button> </td>
+    </tr>
+  </table>
+  
+  
+  <br>
+  <br>
+    
+  
+  
+  <kendo-grid [data]="gridData">
+     
+    <kendo-grid-column field="CompanyName" title="CompanyName">
+      <ng-template kendoGridCellTemplate let-column let-columnIndex="columnIndex"  *ngIf="!isHidden('CompanyName')">
+        <input type="text" [(ngModel)]="column.CompanyName" />
+      </ng-template>
+    
+      <ng-template kendoGridCellTemplate let-dataItem  let-columnIndex="columnIndex"  *ngIf="isHidden('CompanyName')">
+          {{dataItem.CompanyName}}
+      </ng-template>
+
+    </kendo-grid-column>
+  
+    <kendo-grid-column field="ContactName" title="ContactName">
+      <ng-template kendoGridCellTemplate let-column let-columnIndex="columnIndex"  *ngIf="!isHidden('ContactName')">
+        <input type="text" [(ngModel)]="column.ContactName" />
+      </ng-template>
+   
+      <ng-template kendoGridCellTemplate let-dataItem  let-columnIndex="columnIndex"  *ngIf="isHidden('ContactName')">
+          {{dataItem.ContactName}}
+      </ng-template>
+
+    </kendo-grid-column>
+  
+    <kendo-grid-column field="ContactTitle" title="ContactTitle">
+      <ng-template kendoGridCellTemplate let-column let-columnIndex="columnIndex" *ngIf="!isHidden('ContactTitle')">
+        <input type="text" [(ngModel)]="column.ContactTitle" />
+      </ng-template>
+    
+      <ng-template kendoGridCellTemplate let-dataItem  let-columnIndex="columnIndex"  *ngIf="isHidden('ContactTitle')">
+          {{dataItem.ContactTitle}}
+      </ng-template>
+
+    </kendo-grid-column>
+    
+  </kendo-grid>

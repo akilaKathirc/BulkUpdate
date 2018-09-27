@@ -1,0 +1,50 @@
+<div class="example-config">
+  <button (click)="restoreColumns()" class="k-button">Restore hidden columns</button>
+</div>
+
+
+<table>
+  <tr>
+    <td>
+      <kendo-dropdownlist [data]="columns" (valueChange)="onChange($event)"></kendo-dropdownlist>
+    </td>
+    <td> <input type="text" [(ngModel)]="txtFind"></td>
+    <td> <input type="text" [(ngModel)]="txtReplace"></td>
+    <td> <button (click)="findAndReplace()">Find and Replace</button> </td>
+  </tr>
+</table>
+
+
+<br>
+<br>
+
+
+
+
+<kendo-grid [data]="gridData">
+  <kendo-grid-column field="CompanyName" title="Company Name" *ngIf="!isHidden('CompanyName')">
+  </kendo-grid-column>
+  <kendo-grid-column field="ContactName" title="Contact Name" *ngIf="!isHidden('ContactName')">
+  </kendo-grid-column>
+  <kendo-grid-column field="ContactTitle" title="ContactTitle" *ngIf="!isHidden('ContactTitle')">
+  </kendo-grid-column>
+
+  <kendo-grid-column field="CompanyName_txt" title="CompanyName" *ngIf="!isHidden('CompanyName_txt')">
+    <ng-template kendoGridCellTemplate let-column let-columnIndex="columnIndex">
+      <input type="text" [(ngModel)]="column.CompanyName_txt" />
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column field="ContactName_txt" title="ContactName" *ngIf="!isHidden('ContactName_txt')">
+    <ng-template kendoGridCellTemplate let-column let-columnIndex="columnIndex">
+      <input type="text" [(ngModel)]="column.ContactName_txt" />
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column field="ContactTitle_txt" title="ContactTitle" *ngIf="!isHidden('ContactTitle_txt')">
+    <ng-template kendoGridCellTemplate let-column let-columnIndex="columnIndex">
+      <input type="text" [(ngModel)]="column.ContactTitle_txt" />
+    </ng-template>
+  </kendo-grid-column>
+  
+</kendo-grid>

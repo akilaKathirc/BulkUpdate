@@ -1,0 +1,36 @@
+<!-- <app-inlline-editing></app-inlline-editing>
+
+ <br>
+<br>
+<app-kendo-ddl></app-kendo-ddl>
+
+<br>
+<br> 
+<app-custom-editing></app-custom-editing> -->
+
+<table>
+    <tr>
+        <td>
+            <div>
+                <table class=" nav nav-tabs nav-justified nav-divider">
+                    <tr>                            
+            <td class="col-md-3"><a routerLink="ReactiveFormValidation">Reactive Form Validation</a></td>
+            <td class="col-md-3"><a routerLink="ReactiveForms">Reactive Forms</a></td>
+            <td class="col-md-3"><a routerLink="KendoGridReactiveForms">Kendo Grid Reactive Forms</a></td>
+            <td class="col-md-3"><a routerLink="CellEditing">Cell Editing</a></td>
+            <td class="col-md-3"><a routerLink="RowEditing">Row Editing</a></td>
+            <td class="col-md-3"><a routerLink="customKendoPanel">custom Kendo Panel</a></td>
+            <td class="col-md-3"><a routerLink="SameTemplate">Same Template</a></td>
+            <td class="col-md-3"><a routerLink="KendoPanel">Kendo Panel</a></td>
+            <td class="col-md-3"><a routerLink="InllineEditing">Inlline Editing</a></td>
+            <td class="col-md-3"><a routerLink="HideColumn">Hide Column</a></td>
+            <td class="col-md-3"><a routerLink="KendoDDL">Kendo DDL</a></td>
+            <td class="col-md-3"><a routerLink="AngularAimations">Angular Aimations</a></td>
+            <td><a [routerLink]="['/second', {outlets: {firstchild: ['firstchildcomp'], secondchild: ['nothing']}}]">Secondscreen</a></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+    <tr><td><router-outlet></router-outlet></td></tr>
+</table>

@@ -1,0 +1,30 @@
+<kendo-grid  #grid [kendoGridBinding]="gridData" [pageSize]="5" [pageable]="true"
+  [sortable]="true" >
+            <kendo-grid-column 
+              *ngFor="let column of columns" 
+              [field]="column"
+              [title]="getColumnTitle(column)"
+              [width]="140">
+                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex" >
+                  <span [class.special]="column === 'CompanyName'">  
+                  <span *ngIf="column !== 'ContactTitle'" [class.yellowback]="column === 'ContactName'">  
+                    {{dataItem[column]}}
+                    </span>
+                    </span>
+                    <span *ngIf="column === 'ContactTitle'" [ngSwitch]="dataItem.ContactTitle">
+                      <i *ngSwitchCase="'Sales Representative'" class="fa fa-home fa-fw" aria-hidden="true"></i>
+                      <i *ngSwitchCase="'Owner'" class="fa fa-book fa-fw" aria-hidden="true"></i>
+                      <i *ngSwitchCase="'Marketing Manager'" class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                      <!--  etc.  -->
+                    </span>
+                    <kendo-slider *ngIf = "column === 'Slider'"
+                        [fixedTickWidth]="10"
+                        [min]="0"
+                        [max]="10"
+                        [smallStep]="1"
+                        [value] = dataItem.Slider
+                        disabled = "true"
+                    ></kendo-slider>
+                    </ng-template>
+            </kendo-grid-column>
+      </kendo-grid>

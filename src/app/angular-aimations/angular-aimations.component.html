@@ -1,0 +1,13 @@
+<div *ngIf="visible" [@slideInOut] (click)="toggleState()">
+  This element will slide up and down when the value of 'visible'
+   changes from true to false and vice versa.
+  </div>
+
+  <br>
+  <ul>
+      <li *ngFor="let hero of heroes"
+          [@heroState]="hero.state"
+          (click)="toggleState()">
+        {{hero.name}}
+      </li>
+    </ul>
