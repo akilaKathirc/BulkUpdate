@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row headerdiv">
+    <div class="col headerText">
+      Update Rule(s)
+    </div>   
+  </div>
+  <div class="row tabdivPosition">
+    <div class="col-md-12">
+      <kendo-tabstrip (tabSelect)="onTabSelect($event)" class="tabPosition">
+          <kendo-tabstrip-tab [title]="'Pick Rule'" [selected]="true">
+            <ng-template kendoTabContent>
+            <app-common-bulk-update></app-common-bulk-update>
+            </ng-template>
+          </kendo-tabstrip-tab>
+          <kendo-tabstrip-tab [title]="'Numeric Data Handler'">
+            <ng-template kendoTabContent>
+              <p>
+                  Tallinn is the capital and largest city of Estonia. It is situated on the northern coast of the country, on the shore of the Gulf of Finland, 80 km (50 mi) south of Helsinki, east of Stockholm and west of Saint Petersburg. From the 13th century until 1918 (and briefly during the Nazi occupation of Estonia from 1941 to 1944), the city was known as Reval. Tallinn occupies an area of 159.2 km2 (61.5 sq mi) and has a population of 443,894. Approximately 32% of Estonia's total population lives in Tallinn.
+              </p>
+      
+            </ng-template>
+          </kendo-tabstrip-tab>
+      
+        </kendo-tabstrip>
+      </div>
+    </div>
+ 
+  
+
+
+</div>

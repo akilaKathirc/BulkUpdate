@@ -46,6 +46,8 @@ import { EditService1 } from './kendo-grid-reactive-forms/edit.service';
 import { KendoGridReactiveFormsComponent } from './kendo-grid-reactive-forms/kendo-grid-reactive-forms.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { ReactiveCompComponent } from './reactive-comp/reactive-comp.component';
+import { BulkupdatedesignComponent } from './bulkupdatedesign/bulkupdatedesign.component';
+import { CommonBulkUpdateComponent } from './common-bulk-update/common-bulk-update.component';
 
 const routes: Routes = [
   {
@@ -118,7 +120,9 @@ const routes: Routes = [
     CellEditingComponent,
     KendoGridReactiveFormsComponent,
     ReactiveFormsComponent,
-    ReactiveCompComponent
+    ReactiveCompComponent,
+    BulkupdatedesignComponent,
+    CommonBulkUpdateComponent
   ],  
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA

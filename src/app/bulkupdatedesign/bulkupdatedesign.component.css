@@ -1,0 +1,90 @@
+.col {
+  border: 1px;
+  background-color: red;
+  border-color: black;
+}
+
+.col-2 {
+  border: 1px;
+  border-color: black;
+  background-color: gold;
+}
+
+.headerdiv {
+  border-width: 0px;
+  width: 1200px;
+  height: 53px;
+  left: 15px;
+  margin-left: 5px;
+  top: 96.36px;
+  position: absolute;
+  background: inherit;
+  background-color: rgba(222, 222, 222, 1);
+  box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(204, 204, 204, 1);
+  border-radius: 0px;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.headerText {
+  border-width: 0px;
+  height: 33px;
+  background: inherit;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  border-radius: 0px;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-family: 'Open Sans SemiBold', 'Open Sans Regular', 'Open Sans';
+  font-weight: 600;
+  font-style: normal;
+  font-size: 20px;
+  color: #DC5034;
+}
+
+.tabdivPosition {
+  top: 147px;
+  left: 15px;
+  position: absolute;
+  margin-left: 5px;
+  box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(204, 204, 204, 1);
+  border-radius: 0px;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  width: 1200px;
+  height: 350px;
+  background: inherit;
+  background-color: rgba(255, 255, 255, 1); 
+  font-family: 'Open Sans Semibold', 'Open Sans';
+  font-weight: 600;
+  font-style: normal;
+}
+
+.tabPosition {
+  left: 35px;
+  margin-left: 10px;
+  margin-top:10px;
+}
+
+.ng-tns-c2-0 .k-item .k-state-default .ng-star-inserted .k-state-active {
+  border-color: rgba(0,0,0,.08);
+  color: #DC5034 !Important;
+}
+
+.k-tabstrip .k-item {
+  border-color: transparent;
+   color: #656565; 
+  background-color: transparent;
+  background-clip: padding-box;
+}
+
+

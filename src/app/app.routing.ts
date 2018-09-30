@@ -16,9 +16,14 @@ import { CellEditingComponent } from './cell-editing/cell-editing.component';
 import { KendoGridReactiveFormsComponent } from './kendo-grid-reactive-forms/kendo-grid-reactive-forms.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { ReactiveCompComponent } from './reactive-comp/reactive-comp.component';
+import { BulkupdatedesignComponent } from './bulkupdatedesign/bulkupdatedesign.component';
 
-
-const routes: Routes = [{
+const routes: Routes = [
+  {
+    path: '7ColumnDesign',
+    component: BulkupdatedesignComponent,
+    data: {title: "Bulk Update Design"},
+  },{
     path: 'InllineEditing',
     component: InllineEditingComponent,
     data: {title: "Inlline Editing"},
