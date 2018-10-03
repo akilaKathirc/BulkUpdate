@@ -22,10 +22,11 @@ export class DifferentNgTemplateComponent implements OnInit {
   public textField: string;
   public valueField: string;
   public field: string;
-
+  public filterCriteria: string;
   public gridData: any[] = sampleCustomers;
 
   public columns: string[] = ['CompanyName', 'ContactName', 'ContactTitle'];
+  public operatorColumns: string[] = ['Starts with', 'Ends with', 'Contains'];
 
   public hiddenColumns: string[] = [];
   public txtFind: string;
@@ -41,12 +42,37 @@ export class DifferentNgTemplateComponent implements OnInit {
   }
 
   public findAndReplace() {
+
+    this.filterCriteria = localStorage.getItem("filterCriteria");
     this.field = localStorage.getItem("ddlColumnValue");
-    for (var i = 0; i < this.gridData.length; i++) {
-      if (this.gridData[i][this.field].indexOf(this.txtFind) > -1) {
-        this.gridData[i][this.field] = this.updateArray(this.gridData[i][this.field], this.txtReplace, this.txtFind);
-      }
-    }
+    this.txtFind = this.txtFind.toLowerCase()
+this.gridData.map(function(row) {
+  row = JSON.parse(row),
+  console.log(JSON.stringify(row[this.field]));
+  // if (row[this.field].toLowerCase().indexOf(this.txtFind) > -1) {
+  //   var totalItemLength = row[this.field].length;
+  //   console.log(this.filterCriteria);
+  //   switch (this.filterCriteria) {
+  //     case "Contains": {
+  //       row[this.field] = this.updateArray(row[this.field], this.txtReplace, this.txtFind);
+  //       break;
+  //     }
+  //     case "Starts with": {
+  //       if (row[this.field].indexOf(this.txtFind) === 0) {
+  //         row[this.field] = this.updateArray(row[this.field], this.txtReplace, this.txtFind);
+  //       }
+  //       break;
+  //     }
+  //     case "Ends with": {
+  //       if ((totalItemLength - row[this.field].indexOf(this.txtFind)) === this.txtFind.length) {
+  //         row[this.field] = this.updateArray(row[this.field], this.txtReplace, this.txtFind);
+  //       }
+  //       break;
+  //     }
+  //   }
+  // }
+});
+    
     console.log(JSON.stringify(this.gridData));
   }
 
@@ -67,8 +93,15 @@ export class DifferentNgTemplateComponent implements OnInit {
     return "ContactName";
   }
 
+
+  public onOperatorChange(value: any): void {
+    localStorage.setItem("filterCriteria", value);
+    console.log('Filter Criteria  : ' + value);
+    this.filterCriteria = value;
+  }
+
   public onChange(value: any): void {
-   // console.log('before   :'+JSON.stringify(this.hiddenColumns));
+    // console.log('before   :'+JSON.stringify(this.hiddenColumns));
     this.hiddenColumns.push(localStorage.getItem("ddlColumnValue"));
 
 
@@ -80,8 +113,8 @@ export class DifferentNgTemplateComponent implements OnInit {
         break;       //<-- Uncomment  if only the first term has to be removed
       }
     }
-    
-//console.log('after   :'+JSON.stringify(this.hiddenColumns));
+
+    //console.log('after   :'+JSON.stringify(this.hiddenColumns));
   }
 
 }

@@ -2,6 +2,7 @@
   <table style="border:1px;">
     <tr>
       <td>Columns to be Edited</td>
+      <td>Operators</td>
       <td>Find </td>
       <td>Replace </td>
       <td></td>
@@ -9,6 +10,9 @@
     <tr>
       <td>
         <kendo-dropdownlist [data]="columns" (valueChange)="onChange($event)"></kendo-dropdownlist>
+      </td>
+      <td>
+        <kendo-dropdownlist [data]="operatorColumns" (valueChange)="onOperatorChange($event)"></kendo-dropdownlist>
       </td>
       <td> <input type="text" [(ngModel)]="txtFind"></td>
       <td> <input type="text" [(ngModel)]="txtReplace"></td>

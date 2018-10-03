@@ -25,7 +25,16 @@
         Replace With
         <input kendoTextBox   class="inputControl rounded"/>
     </div>
-    <div class="col-2">Col 7</div>
+    <div class="col-2"> <div>
+        <h2>Hello {{name}}</h2>
+        <div>
+          <h1 *ngFor="let item of itemArray.items">{{ item.name }}</h1>
+        </div>
+        <button (click)="showUpdatedItem(newItem)">Update Item</button>
+      </div>
+      <p>
+      {{ itemArray | json }}
+      </p></div>
   </div>
 </div>
 
