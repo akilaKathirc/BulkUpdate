@@ -1,5 +1,8 @@
 import { sampleCustomers } from './../Shared/customers';
 import { Component, OnInit } from '@angular/core';
+import { DynamicModel }  from '../DynamicTable';
+
+
 
 @Component({
   selector: 'app-different-ng-template',
@@ -23,8 +26,8 @@ export class DifferentNgTemplateComponent implements OnInit {
   public valueField: string;
   public field: string;
   public filterCriteria: string;
-  public gridData: any[] = sampleCustomers;
-
+  public gridData: DynamicModel[] = sampleCustomers;
+  public rowData:DynamicModel;
   public columns: string[] = ['CompanyName', 'ContactName', 'ContactTitle'];
   public operatorColumns: string[] = ['Starts with', 'Ends with', 'Contains'];
 
@@ -45,35 +48,35 @@ export class DifferentNgTemplateComponent implements OnInit {
 
     this.filterCriteria = localStorage.getItem("filterCriteria");
     this.field = localStorage.getItem("ddlColumnValue");
-    this.txtFind = this.txtFind.toLowerCase()
-this.gridData.map(function(row) {
-  row = JSON.parse(row),
-  console.log(JSON.stringify(row[this.field]));
-  // if (row[this.field].toLowerCase().indexOf(this.txtFind) > -1) {
-  //   var totalItemLength = row[this.field].length;
-  //   console.log(this.filterCriteria);
-  //   switch (this.filterCriteria) {
-  //     case "Contains": {
-  //       row[this.field] = this.updateArray(row[this.field], this.txtReplace, this.txtFind);
-  //       break;
-  //     }
-  //     case "Starts with": {
-  //       if (row[this.field].indexOf(this.txtFind) === 0) {
-  //         row[this.field] = this.updateArray(row[this.field], this.txtReplace, this.txtFind);
-  //       }
-  //       break;
-  //     }
-  //     case "Ends with": {
-  //       if ((totalItemLength - row[this.field].indexOf(this.txtFind)) === this.txtFind.length) {
-  //         row[this.field] = this.updateArray(row[this.field], this.txtReplace, this.txtFind);
-  //       }
-  //       break;
-  //     }
-  //   }
-  // }
-});
-    
-    console.log(JSON.stringify(this.gridData));
+    this.txtFind = this.txtFind.toLowerCase();
+    for (var i = 0; i < this.gridData.length; i++) {
+      if (this.gridData[i][this.field].toLowerCase().indexOf(this.txtFind) > -1) {
+        var totalItemLength = this.gridData[i][this.field].length;
+       
+        switch (this.filterCriteria) {
+          case "Contains": {
+            console.log(this.filterCriteria,this.gridData[i][this.field].toLowerCase(),this.txtReplace,this.txtFind);
+            this.gridData[i][this.field] = this.updateArray(this.gridData[i][this.field],
+               this.txtReplace, this.txtFind);
+            break;
+          }
+          case "Starts with": {
+            if (this.gridData[i][this.field].toLowerCase().indexOf(this.txtFind) === 0) {
+              this.gridData[i][this.field] = this.updateArray(this.gridData[i][this.field].toLowerCase(), this.txtReplace, this.txtFind);
+            }
+            break;
+          }
+          case "Ends with": {
+            if ((totalItemLength - this.gridData[i][this.field].toLowerCase().indexOf(this.txtFind)) === this.txtFind.length) {
+              this.gridData[i][this.field] = this.updateArray(this.gridData[i][this.field].toLowerCase(), this.txtReplace, this.txtFind);
+            }
+            break;
+          }
+        }
+      }
+    }
+   
+   console.log(JSON.stringify(this.gridData));
   }
 
   updateArray(colvalue: string, replacetxt: string, find: string): string {
@@ -96,7 +99,7 @@ this.gridData.map(function(row) {
 
   public onOperatorChange(value: any): void {
     localStorage.setItem("filterCriteria", value);
-    console.log('Filter Criteria  : ' + value);
+   // console.log('Filter Criteria  : ' + value);
     this.filterCriteria = value;
   }
 
@@ -116,5 +119,28 @@ this.gridData.map(function(row) {
 
     //console.log('after   :'+JSON.stringify(this.hiddenColumns));
   }
+
+
+  // showUpdatedItem(newItem){
+  //   let updateItem = this.gridData.items.find(this.findIndexToUpdate, newItem.id);
+
+  //   let index = this.gridData.items.indexOf(updateItem);
+
+
+  //   this.gridData.items[index] = newItem;
+
+  // }
+
+  findIndexToUpdate(newItem) { 
+        return newItem.id === this;
+  }
+
+
+
+
+
+
+
+
 
 }
