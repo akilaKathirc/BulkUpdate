@@ -9,6 +9,9 @@ import { DynamicModel }  from '../DynamicTable';
   templateUrl: './different-ng-template.component.html',
   styleUrls: ['./different-ng-template.component.css']
 })
+
+
+
 export class DifferentNgTemplateComponent implements OnInit {
 
   constructor() {
@@ -17,6 +20,9 @@ export class DifferentNgTemplateComponent implements OnInit {
     this.hiddenColumns.push("ContactName");
     this.hiddenColumns.push("ContactTitle");
   }
+
+
+
 
   ngOnInit() {
   }
@@ -30,11 +36,11 @@ export class DifferentNgTemplateComponent implements OnInit {
   public rowData:DynamicModel;
   public columns: string[] = ['CompanyName', 'ContactName', 'ContactTitle'];
   public operatorColumns: string[] = ['Starts with', 'Ends with', 'Contains'];
-
+  public positon: string;
   public hiddenColumns: string[] = [];
   public txtFind: string;
   public txtReplace: string;
-
+  public dataIndex:number;
 
 
   public restoreColumns(): void {
@@ -52,12 +58,13 @@ export class DifferentNgTemplateComponent implements OnInit {
     for (var i = 0; i < this.gridData.length; i++) {
       if (this.gridData[i][this.field].toLowerCase().indexOf(this.txtFind) > -1) {
         var totalItemLength = this.gridData[i][this.field].length;
-       
+        var _dataIndex = this.gridData[i][this.field].toLowerCase().indexOf(this.txtFind);
+        var afterPos= _dataIndex +this.txtFind.length;
         switch (this.filterCriteria) {
           case "Contains": {
             console.log(this.filterCriteria,this.gridData[i][this.field].toLowerCase(),this.txtReplace,this.txtFind);
             this.gridData[i][this.field] = this.updateArray(this.gridData[i][this.field],
-               this.txtReplace, this.txtFind);
+              this.gridData[i][this.field], this.txtFind);
             break;
           }
           case "Starts with": {
@@ -72,12 +79,71 @@ export class DifferentNgTemplateComponent implements OnInit {
             }
             break;
           }
+          case "Append":{
+            switch (this.positon) {
+              
+              case "At the begining":
+              this.gridData[i][this.field] = this.txtReplace +  this.gridData[i][this.field];
+              break;
+              case "At the end":
+              this.gridData[i][this.field] = this.gridData[i][this.field] + this.txtReplace;
+              break;
+              case "before":
+
+              this.gridData[i][this.field] = [this.gridData[i][this.field].slice(0, _dataIndex), this.txtReplace, 
+              this.gridData[i][this.field].slice(_dataIndex)].join('');
+              break;
+
+              case "after":
+              this.gridData[i][this.field] = [this.gridData[i][this.field].slice(0, afterPos), this.txtReplace, 
+              this.gridData[i][this.field].slice(afterPos)].join('');
+              break;
+
+            }
+          }
+
+case "remove":
+{
+  switch (this.positon) {
+              
+    case "At the begining":
+    if(this.dataIndex === 0){
+      this.gridData[i][this.field] = this.updateArray(this.gridData[i][this.field],this.txtFind,'')  ;
+    }
+    
+    break;
+    case "At the end":
+
+    if(this.dataIndex === (totalItemLength - afterPos)){
+      this.gridData[i][this.field] = this.updateArray(this.gridData[i][this.field],this.txtFind,'')  ;
+    }
+    break;
+    case "before":
+
+    this.gridData[i][this.field] = [this.gridData[i][this.field].slice(0, _dataIndex), this.txtReplace, 
+    this.gridData[i][this.field].slice(_dataIndex)].join('');
+    break;
+
+    case "after":
+    this.gridData[i][this.field] = [this.gridData[i][this.field].slice(0, afterPos), this.txtReplace, 
+    this.gridData[i][this.field].slice(afterPos)].join('');
+    break;
+
+  } 
+}
+
+
+
+
         }
       }
     }
    
    console.log(JSON.stringify(this.gridData));
   }
+
+ 
+
 
   updateArray(colvalue: string, replacetxt: string, find: string): string {
     return colvalue.replace(find, replacetxt);

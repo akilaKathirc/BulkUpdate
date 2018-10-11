@@ -10,7 +10,7 @@ export class ReactiveFormsComponent implements OnInit {
 
   registerForm: FormGroup;
     submitted = false;
- 
+ public loading=true;
     constructor(private formBuilder: FormBuilder) { }
  
     ngOnInit() {

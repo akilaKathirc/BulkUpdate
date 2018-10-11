@@ -15,9 +15,9 @@ import { GridComponent } from '@progress/kendo-angular-grid';
 })
 export class RowEditingComponent implements OnInit {
 
-  private gridData: any[] = sampleCustomers;
+  public gridData: any[] = sampleCustomers;
     private hiddenColumns: string[] = [];
-private columns: string[] = [];
+public columns: string[] = [];
 
       constructor(private renderer: Renderer) {}
     private restoreColumns(): void {

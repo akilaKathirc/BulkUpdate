@@ -11,5 +11,7 @@ export class BulkupdatedesignComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
+  public onTabSelect(e)
+  {}
 }

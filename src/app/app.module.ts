@@ -1,6 +1,6 @@
 import { PopupAnchorDirective } from './Shared/popup.anchor-target.directive';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClient,HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -125,7 +125,7 @@ const routes: Routes = [
     CommonBulkUpdateComponent
   ],  
       schemas: [
-        CUSTOM_ELEMENTS_SCHEMA
+        CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA
       ],
   imports: [
       
