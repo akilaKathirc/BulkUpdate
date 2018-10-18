@@ -55,89 +55,111 @@ export class DifferentNgTemplateComponent implements OnInit {
     this.filterCriteria = localStorage.getItem("filterCriteria");
     this.field = localStorage.getItem("ddlColumnValue");
     this.txtFind = this.txtFind.toLowerCase();
-    for (var i = 0; i < this.gridData.length; i++) {
-      if (this.gridData[i][this.field].toLowerCase().indexOf(this.txtFind) > -1) {
-        var totalItemLength = this.gridData[i][this.field].length;
-        var _dataIndex = this.gridData[i][this.field].toLowerCase().indexOf(this.txtFind);
-        var afterPos= _dataIndex +this.txtFind.length;
-        switch (this.filterCriteria) {
-          case "Contains": {
-            console.log(this.filterCriteria,this.gridData[i][this.field].toLowerCase(),this.txtReplace,this.txtFind);
-            this.gridData[i][this.field] = this.updateArray(this.gridData[i][this.field],
-              this.gridData[i][this.field], this.txtFind);
-            break;
-          }
-          case "Starts with": {
-            if (this.gridData[i][this.field].toLowerCase().indexOf(this.txtFind) === 0) {
-              this.gridData[i][this.field] = this.updateArray(this.gridData[i][this.field].toLowerCase(), this.txtReplace, this.txtFind);
-            }
-            break;
-          }
-          case "Ends with": {
-            if ((totalItemLength - this.gridData[i][this.field].toLowerCase().indexOf(this.txtFind)) === this.txtFind.length) {
-              this.gridData[i][this.field] = this.updateArray(this.gridData[i][this.field].toLowerCase(), this.txtReplace, this.txtFind);
-            }
-            break;
-          }
-          case "Append":{
-            switch (this.positon) {
+    debugger;
+this.gridData
+.map(row => {
+  this.rowData = <DynamicModel>row;
+  return this.rowData})
+.filter(row => row[this.field] !== null)
+.filter(row => row[this.field].toLowerCase().indexOf(this.txtFind) > -1)
+.map(row => {
+  debugger;
+  switch (this.filterCriteria) {
+    case "Contains": {
+      this.rowData[this.field] = this.updateArray(this.rowData[this.field],this.rowData[this.field], this.txtFind);
+      alert(this.rowData[this.field]);
+      break;
+    }};
+   
+})
+
+
+
+
+
+//     for (var i = 0; i < this.gridData.length; i++) {
+//       if (this.gridData[i][this.field].toLowerCase().indexOf(this.txtFind) > -1) {
+//         var totalItemLength = this.gridData[i][this.field].length;
+//         var _dataIndex = this.gridData[i][this.field].toLowerCase().indexOf(this.txtFind);
+//         var afterPos= _dataIndex +this.txtFind.length;
+//         switch (this.filterCriteria) {
+//           case "Contains": {
+//             console.log(this.filterCriteria,this.gridData[i][this.field].toLowerCase(),this.txtReplace,this.txtFind);
+//             this.gridData[i][this.field] = this.updateArray(this.gridData[i][this.field],
+//               this.gridData[i][this.field], this.txtFind);
+//             break;
+//           }
+//           case "Starts with": {
+//             if (this.gridData[i][this.field].toLowerCase().indexOf(this.txtFind) === 0) {
+//               this.gridData[i][this.field] = this.updateArray(this.gridData[i][this.field].toLowerCase(), this.txtReplace, this.txtFind);
+//             }
+//             break;
+//           }
+//           case "Ends with": {
+//             if ((totalItemLength - this.gridData[i][this.field].toLowerCase().indexOf(this.txtFind)) === this.txtFind.length) {
+//               this.gridData[i][this.field] = this.updateArray(this.gridData[i][this.field].toLowerCase(), this.txtReplace, this.txtFind);
+//             }
+//             break;
+//           }
+//           case "Append":{
+//             switch (this.positon) {
               
-              case "At the begining":
-              this.gridData[i][this.field] = this.txtReplace +  this.gridData[i][this.field];
-              break;
-              case "At the end":
-              this.gridData[i][this.field] = this.gridData[i][this.field] + this.txtReplace;
-              break;
-              case "before":
+//               case "At the begining":
+//               this.gridData[i][this.field] = this.txtReplace +  this.gridData[i][this.field];
+//               break;
+//               case "At the end":
+//               this.gridData[i][this.field] = this.gridData[i][this.field] + this.txtReplace;
+//               break;
+//               case "before":
 
-              this.gridData[i][this.field] = [this.gridData[i][this.field].slice(0, _dataIndex), this.txtReplace, 
-              this.gridData[i][this.field].slice(_dataIndex)].join('');
-              break;
+//               this.gridData[i][this.field] = [this.gridData[i][this.field].slice(0, _dataIndex), this.txtReplace, 
+//               this.gridData[i][this.field].slice(_dataIndex)].join('');
+//               break;
 
-              case "after":
-              this.gridData[i][this.field] = [this.gridData[i][this.field].slice(0, afterPos), this.txtReplace, 
-              this.gridData[i][this.field].slice(afterPos)].join('');
-              break;
+//               case "after":
+//               this.gridData[i][this.field] = [this.gridData[i][this.field].slice(0, afterPos), this.txtReplace, 
+//               this.gridData[i][this.field].slice(afterPos)].join('');
+//               break;
 
-            }
-          }
+//             }
+//           }
 
-case "remove":
-{
-  switch (this.positon) {
+// case "remove":
+// {
+//   switch (this.positon) {
               
-    case "At the begining":
-    if(this.dataIndex === 0){
-      this.gridData[i][this.field] = this.updateArray(this.gridData[i][this.field],this.txtFind,'')  ;
-    }
+//     case "At the begining":
+//     if(this.dataIndex === 0){
+//       this.gridData[i][this.field] = this.updateArray(this.gridData[i][this.field],this.txtFind,'')  ;
+//     }
     
-    break;
-    case "At the end":
+//     break;
+//     case "At the end":
 
-    if(this.dataIndex === (totalItemLength - afterPos)){
-      this.gridData[i][this.field] = this.updateArray(this.gridData[i][this.field],this.txtFind,'')  ;
-    }
-    break;
-    case "before":
+//     if(this.dataIndex === (totalItemLength - afterPos)){
+//       this.gridData[i][this.field] = this.updateArray(this.gridData[i][this.field],this.txtFind,'')  ;
+//     }
+//     break;
+//     case "before":
 
-    this.gridData[i][this.field] = [this.gridData[i][this.field].slice(0, _dataIndex), this.txtReplace, 
-    this.gridData[i][this.field].slice(_dataIndex)].join('');
-    break;
+//     this.gridData[i][this.field] = [this.gridData[i][this.field].slice(0, _dataIndex), this.txtReplace, 
+//     this.gridData[i][this.field].slice(_dataIndex)].join('');
+//     break;
 
-    case "after":
-    this.gridData[i][this.field] = [this.gridData[i][this.field].slice(0, afterPos), this.txtReplace, 
-    this.gridData[i][this.field].slice(afterPos)].join('');
-    break;
+//     case "after":
+//     this.gridData[i][this.field] = [this.gridData[i][this.field].slice(0, afterPos), this.txtReplace, 
+//     this.gridData[i][this.field].slice(afterPos)].join('');
+//     break;
 
-  } 
-}
-
-
+//   } 
+// }
 
 
-        }
-      }
-    }
+
+
+//         }
+//       }
+//     }
    
    console.log(JSON.stringify(this.gridData));
   }
