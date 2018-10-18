@@ -54,29 +54,49 @@ export class DifferentNgTemplateComponent implements OnInit {
 
     this.filterCriteria = localStorage.getItem("filterCriteria");
     this.field = localStorage.getItem("ddlColumnValue");
-    this.txtFind = this.txtFind.toLowerCase();
+    this.txtFind = this.txtFind;
+    console.log(this.field,this.txtFind);
     debugger;
-this.gridData
-.map(row => {
+    
+this.gridData.map(row => {
   this.rowData = <DynamicModel>row;
+ // console.log(JSON.stringify(this.rowData));
   return this.rowData})
 .filter(row => row[this.field] !== null)
-.filter(row => row[this.field].toLowerCase().indexOf(this.txtFind) > -1)
+.filter(row => {
+  if(row[this.field].indexOf(this.txtFind) > -1)
+  return row;
+console.log(JSON.stringify(this.rowData))
+})
 .map(row => {
   debugger;
+  var totalItemLength = row[this.field].length;
+        var _dataIndex = row[this.field].indexOf(this.txtFind);
+        var afterPos= _dataIndex +this.txtFind.length;
   switch (this.filterCriteria) {
     case "Contains": {
-      this.rowData[this.field] = this.updateArray(this.rowData[this.field],this.rowData[this.field], this.txtFind);
-      alert(this.rowData[this.field]);
+      row[this.field] = this.updateArray(row[this.field],this.txtReplace, this.txtFind);
+      alert(row[this.field]);
       break;
-    }};
-   
+    }
+    case "Starts with": {
+      if (row[this.field].indexOf(this.txtFind) === 0) {
+        row[this.field] = this.updateArray(row[this.field], this.txtReplace, this.txtFind);
+      }
+      break;
+    }
+    case "Ends with": {
+      if ((totalItemLength - row[this.field].indexOf(this.txtFind)) === this.txtFind.length) {
+        row[this.field] = this.updateArray(row[this.field].toLowerCase(), this.txtReplace, this.txtFind);
+      }
+      break;
+    }
+  
+  
+  
+  
+  };   
 })
-
-
-
-
-
 //     for (var i = 0; i < this.gridData.length; i++) {
 //       if (this.gridData[i][this.field].toLowerCase().indexOf(this.txtFind) > -1) {
 //         var totalItemLength = this.gridData[i][this.field].length;
