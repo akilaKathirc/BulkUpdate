@@ -48,6 +48,7 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
 import { ReactiveCompComponent } from './reactive-comp/reactive-comp.component';
 import { BulkupdatedesignComponent } from './bulkupdatedesign/bulkupdatedesign.component';
 import { CommonBulkUpdateComponent } from './common-bulk-update/common-bulk-update.component';
+import { NewbulkupdateComponent } from './newbulkupdate/newbulkupdate.component';
 
 const routes: Routes = [
   {
@@ -122,7 +123,8 @@ const routes: Routes = [
     ReactiveFormsComponent,
     ReactiveCompComponent,
     BulkupdatedesignComponent,
-    CommonBulkUpdateComponent
+    CommonBulkUpdateComponent,
+    NewbulkupdateComponent
   ],  
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA
